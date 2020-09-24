@@ -14,6 +14,8 @@ class Home extends CI_Controller{
     public function index()
     {
         $datas['categories'] = $this->categories;
+        $this->load->model('publicationsmodel', 'modelhighlights');
+        $datas['posts'] = $this->modelhighlights->highlightsHome();
         $this->load->view('frontend/template/html-header', $datas);
         $this->load->view('frontend/template/header');
         $this->load->view('frontend/home');
