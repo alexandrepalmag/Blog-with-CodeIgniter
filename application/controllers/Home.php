@@ -6,11 +6,15 @@ class Home extends CI_Controller{
     public function __construct()
     {
         parent::__construct();
+
+        $this->load->model('CategoriesModel', 'modelcategories');
+        $this-> categories = $this->modelcategories->listCategories();
     }
 
     public function index()
     {
-        $this->load->view('frontend/template/html-header');
+        $datas['categories'] = $this->categories;
+        $this->load->view('frontend/template/html-header', $datas);
         $this->load->view('frontend/template/header');
         $this->load->view('frontend/home');
         $this->load->view('frontend/template/aside');
