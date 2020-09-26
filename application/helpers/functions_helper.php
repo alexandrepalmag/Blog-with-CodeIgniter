@@ -13,7 +13,7 @@ function clear($string){
 	return $string;
 }
 
-function postin($string){
+/* function postin($string){
     
     $dia_sem= date('w', strtotime($string));
 
@@ -66,4 +66,4 @@ function postin($string){
     $hora = date('H:i', strtotime($string));
  
     return $semana.' '.$ano.' de '.$mes.' de '.$dia.' '.$hora;
-}
+} */

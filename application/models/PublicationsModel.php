@@ -18,9 +18,12 @@ class PublicationsModel extends CI_Model{
     }
 
     public function highlightsHome() {
+        $this->db->select('user.id as idauthor, user.name, posts.id, posts.title, posts.subtitle, posts.user, posts.date, posts.img');
+        $this->db->from('posts');
+        $this->db->join('user', 'user.id = posts.user');
         $this->db->limit(4);
-        $this->db->order_by('date', 'DESC');
-        return $this->db->get('posts')->result();
+        $this->db->order_by('posts.date', 'DESC');
+        return $this->db->get()->result();
     }
 
 }
