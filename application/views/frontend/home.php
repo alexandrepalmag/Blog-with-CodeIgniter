@@ -7,8 +7,8 @@
     <div class="col-md-8">
 
         <h1 class="page-header">
-            Home Page -
-            <small>Recent Posts</small>
+            <?php echo $title ?>
+            <small> > <?php echo $subtitle ?></small>
         </h1>
         <?php foreach($posts as $thishighlight) { ?>
        
