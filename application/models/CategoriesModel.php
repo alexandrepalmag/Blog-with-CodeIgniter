@@ -16,4 +16,10 @@ class CategoriesModel extends CI_Model{
         return $this->db->get('category')->result();
     }
 
+    public function title_list($id) {
+        $this->db->from('category');
+        $this->db->where('id='.$id);
+        return $this->db->get()->result();
+    }
+
 }

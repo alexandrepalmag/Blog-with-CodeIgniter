@@ -9,7 +9,17 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title><?php echo $title.' - '.$subtitle ?></title>
+    <title><?php echo $title . ' - ' ?>
+        <?php
+        if ($subtitle != '') {
+            echo $subtitle;
+        } else {
+            foreach ($subtitledb as $dbtitle) {
+                echo $dbtitle->title;
+            }
+        }
+        ?>
+    </title>
 
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo base_url('assets/frontend/css/bootstrap.min.css') ?>" rel="stylesheet">
@@ -28,4 +38,5 @@
     <![endif]-->
 
 </head>
+
 <body>
