@@ -23,4 +23,11 @@ class UsersModel extends CI_Model{
         return $this->db->get()->result();
     }
 
+    public function list_authors() {
+        $this->db->select('id, name, img');
+        $this->db->from('user');
+        $this->db->order_by('name', 'ASC');
+        return $this->db->get()->result();
+    }
+
 }

@@ -24,10 +24,10 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#">Sobre Nós</a>
+                    <a href="<?php echo base_url('aboutus'); ?>">About Us</a>
                 </li>
                 <li>
-                    <a href="#">Contato</a>
+                    <a href="#">Contact</a>
                 </li>
             </ul>
         </div>

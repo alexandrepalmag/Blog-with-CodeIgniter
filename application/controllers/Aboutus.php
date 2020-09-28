@@ -9,21 +9,21 @@ class Aboutus extends CI_Controller{
 
         $this->load->model('CategoriesModel', 'modelcategories');
         $this-> categories = $this->modelcategories->listCategories();
+        $this->load->model('usersmodel', 'modelusers');
     }
 
-    public function index($id, $slug=null)
+    public function index()
     {
         $datas['categories'] = $this->categories;
-        $this->load->model('publicationsmodel', 'modelhighlights');
-        $datas['posts'] = $this->modelhighlights->category_post($id);
+        $datas['authors'] = $this->modelusers->list_authors();
         //data that will be sent to the header
         $datas['title'] = 'Categories';
         $datas['subtitle'] = '';
         //end
-        $datas['subtitledb'] = $this->modelcategories->title_list($id);
+       /*  $datas['subtitledb'] = $this->modelcategories->title_list(); */
         $this->load->view('frontend/template/html-header', $datas);
         $this->load->view('frontend/template/header');
-        $this->load->view('frontend/category');
+        $this->load->view('frontend/aboutus');
         $this->load->view('frontend/template/aside');
         $this->load->view('frontend/template/footer');
         $this->load->view('frontend/template/html-footer');
@@ -31,7 +31,7 @@ class Aboutus extends CI_Controller{
 
     public function authors($id, $slug=null) {
         $datas['categories'] = $this->categories;
-        $this->load->model('usersmodel', 'modelusers');
+       
         $datas['authors'] = $this->modelusers->author_list($id);
         
         //data that will be sent to the header
