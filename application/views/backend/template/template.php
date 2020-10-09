@@ -9,7 +9,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Painel Administrativo</a>
+                <a class="navbar-brand" href="index.html">Administrative Panel</a>
             </div>
             <!-- /.navbar-top-links -->
 
@@ -17,16 +17,16 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href="#"><i class="fa fa-sitemap fa-fw"></i> Categorias</a>
+                            <a href="#"><i class="fa fa-sitemap fa-fw"></i> Categories</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-edit fa-fw"></i> Postagens</a>
+                            <a href="#"><i class="fa fa-edit fa-fw"></i> Posts</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-wrench fa-fw"></i> Usuários</a>
+                            <a href="#"><i class="fa fa-wrench fa-fw"></i> Users</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-sign-out fa-fw"></i> Sair do Sistema</a>
+                            <a href="#"><i class="fa fa-sign-out fa-fw"></i> Logoff</a>
                         </li>
                     </ul>
                 </div>
