@@ -1,7 +1,7 @@
 <div id="page-wrapper">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header"><?php echo 'Manage '.$subtitle ?></h1>
+            <h1 class="page-header"><?php echo 'Manage ' . $subtitle ?></h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -15,7 +15,18 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-12">
-
+                            <?php
+                            echo validation_errors();
+                            echo form_open('admin/categories/insert');
+                            ?>
+                            <div class="form-group">
+                                <label id="txt-category">Category Name</label>
+                                <input type="text" id="txt-category" name="txt-category" class="form-control" placeholder="Enter category name...">
+                            </div>
+                                <button type="submit" class="btn btn-default">Register</button>
+                            <?php
+                            echo form_close();
+                            ?>
                         </div>
 
                     </div>
@@ -34,21 +45,20 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-12">
-                            <?php 
-                                $this->table->set_heading("Category Name", "Change","Delete");
-                                foreach($categories as $category) {
-                                    $getName=$category->title;
-                                    $change=anchor(base_url('admin/category'),'<a class="btn btn-info" aria-label="Delete"><i class="fa fa-pencil-square-o"></i></a>');
-                                    $delete=anchor(base_url('admin/category'),'<a class="btn btn-danger" aria-label="Delete"><i class="fa fa-trash fa-lg"></i></a>');
+                            <?php
+                            $this->table->set_heading("Category Name", "Change", "Delete");
+                            foreach ($categories as $category) {
+                                $getName = $category->title;
+                                $change = anchor(base_url('admin/category'), '<a class="btn btn-info" aria-label="Delete"><i class="fa fa-pencil-square-o"></i></a>');
+                                $delete = anchor(base_url('admin/category'), '<a class="btn btn-danger" aria-label="Delete"><i class="fa fa-trash fa-lg"></i></a>');
 
-                                    $this->table->add_row($getName,$change,$delete);
+                                $this->table->add_row($getName, $change, $delete);
+                            }
 
-                                }
-
-                                $this->table->set_template(array(
-                                    'table_open' => '<table class="table">'
-                                ));
-                                echo $this->table->generate();
+                            $this->table->set_template(array(
+                                'table_open' => '<table class="table">'
+                            ));
+                            echo $this->table->generate();
                             ?>
                         </div>
                     </div>
