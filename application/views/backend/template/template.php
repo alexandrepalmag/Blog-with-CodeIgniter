@@ -9,7 +9,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Administrative Panel</a>
+                <a class="navbar-brand" href="<?php echo base_url('admin') ?>">Administrative Panel</a>
             </div>
             <!-- /.navbar-top-links -->
 
@@ -17,13 +17,13 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href="#"><i class="fa fa-sitemap fa-fw"></i> Categories</a>
+                            <a href="<?php echo base_url('admin/category') ?>"><i class="fa fa-sitemap fa-fw"></i> Categories</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-edit fa-fw"></i> Posts</a>
+                            <a href="<?php echo base_url('admin/post') ?>"><i class="fa fa-edit fa-fw"></i> Posts</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-wrench fa-fw"></i> Users</a>
+                            <a href="<?php echo base_url('admin/user') ?>"><i class="fa fa-wrench fa-fw"></i> Users</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-sign-out fa-fw"></i> Logoff</a>
