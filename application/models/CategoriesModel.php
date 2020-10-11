@@ -22,4 +22,11 @@ class CategoriesModel extends CI_Model{
         return $this->db->get()->result();
     }
 
+/* Receive data that is sent from the "Category Name"
+form found in the category.php file */
+    public function addCategory($title) {
+        $datas['title'] = $title;
+        return $this->db->insert('category',$datas);
+    }
+
 }
