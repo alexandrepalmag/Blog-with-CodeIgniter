@@ -49,8 +49,8 @@
                             $this->table->set_heading("Category Name", "Change", "Delete");
                             foreach ($categories as $category) {
                                 $getName = $category->title;
-                                $change = anchor(base_url('admin/category'), '<a class="btn btn-info" aria-label="Delete"><i class="fa fa-pencil-square-o"></i></a>');
-                                $delete = anchor(base_url('admin/category'), '<a class="btn btn-danger" aria-label="Delete"><i class="fa fa-trash fa-lg"></i></a>');
+                                $change = anchor(base_url('admin/category'), '<button class="btn btn-info" aria-label="Delete"><i class="fa fa-pencil-square-o"></i></button>');
+                                $delete = anchor(base_url('admin/category/delete/'.md5($category->id)), '<button class="btn btn-danger" aria-label="Delete"><i class="fa fa-trash fa-lg"></i></button>');
 
                                 $this->table->add_row($getName, $change, $delete);
                             }

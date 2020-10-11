@@ -39,4 +39,16 @@ class Category extends CI_Controller{
             }
         }
     }
+
+    //method to delete a category in database
+
+    public function delete($id)
+    {
+        if($this->modelcategories->deleteCategory($id)){
+            redirect(base_url('admin/category'));
+        }else{
+            echo "It was not possible to delete the category. Try again!";
+        }
+    }
+
 }
