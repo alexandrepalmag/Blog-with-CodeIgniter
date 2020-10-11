@@ -31,8 +31,12 @@ class Category extends CI_Controller{
         if($this->form_validation->run() == false){
             $this->index();
         }else{
-            
+            $title = $this->input->post('txt-category');
+            if($this->modelcategories->addCategory($title)){
+                redirect(base_url('admin/category'));
+            }else{
+                echo "It was not possible to register the category. Try again!";
+            }
         }
     }
-
 }
