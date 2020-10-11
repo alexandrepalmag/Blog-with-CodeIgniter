@@ -16,7 +16,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <?php
-                            echo validation_errors();
+                            echo validation_errors('<div class="alert alert-danger">','</div>');
                             echo form_open('admin/category/insert');
                             ?>
                             <div class="form-group">
