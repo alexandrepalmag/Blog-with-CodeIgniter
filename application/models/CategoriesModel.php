@@ -36,7 +36,7 @@ form found in the category.php file */
     /* method to delete a category in database
     deleteCategory
     Receive data that is sent from the "Category Name"
-    form found in the Category.php file  */
+    form found in the Category.php file*/
     public function deleteCategory($id){
         $this->db->where('md5(id)',$id);
         return $this->db->delete('category');

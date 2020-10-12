@@ -41,7 +41,6 @@ class Category extends CI_Controller{
     }
 
     //method to delete a category in database
-
     public function delete($id)
     {
         if($this->modelcategories->deleteCategory($id)){
