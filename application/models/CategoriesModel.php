@@ -49,4 +49,11 @@ form found in the category.php file */
         return $this->db->get()->result();
     }
 
+    public function updateCategory($title,$id)
+    {
+        $datas['title']=$title;
+        $this->db->where('id',$id);
+        return $this->db->update('category',$datas);
+    }
+
 }
