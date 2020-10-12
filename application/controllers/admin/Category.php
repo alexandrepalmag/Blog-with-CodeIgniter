@@ -68,7 +68,7 @@ class Category extends CI_Controller
         $this->load->view('backend/template/html-footer');
     }
 
-    public function saveEditions($id)
+    public function saveEditions()
     {
         $this->load->library('form_validation');
         $this->form_validation->set_rules(
@@ -81,10 +81,10 @@ class Category extends CI_Controller
         } else {
             $title = $this->input->post('txt-category');
             $id = $this->input->post('txt-id');
-            if ($this->modelcategories->updateCategory($title,$id)) {
+            if ($this->modelcategories->updateCategory($title, $id)) {
                 redirect(base_url('admin/category'));
             } else {
-                echo "It was not possible to register the category. Try again!";
+                echo "It was not possible update the category. Try again!";
             }
         }
     }

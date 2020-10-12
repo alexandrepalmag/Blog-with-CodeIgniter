@@ -23,7 +23,7 @@
                                     <label id="txt-category">Category Name</label>
                                     <input type="text" id="txt-category" name="txt-category" class="form-control" placeholder="Enter category name..." value="<?php echo $category->title ?>">
                                 </div>
-                                <input type="hidden" name="txt-id" id="txt-id" value="<?php echo $category->title ?>">
+                                <input type="hidden" name="txt-id" id="txt-id" value="<?php echo $category->id ?>">
                                 <button type="submit" class="btn btn-default">Update</button>
                             <?php
                             }
