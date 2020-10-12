@@ -7,21 +7,20 @@
                 </div>
                 <div class="panel-body">
                     <?php
-                        echo validation_errors('<div class="alert alert-danger">','</div>');
-                        echo form_open('admin/users/login');
+                    echo validation_errors('<div class="alert alert-danger">', '</div>');
+                    echo form_open('admin/users/login');
                     ?>
-                        <fieldset>
-                            <div class="form-group">
-                                <input class="form-control" placeholder="User" name="txt-user" type="text" autofocus>
-                            </div>
-                            <div class="form-group">
-                                <input class="form-control" placeholder="Password" name="txt-password" type="password" value="">
-                            </div>
-                            <!-- Change this to a button or input when using this as a form -->
-                            <button href="index.html" class="btn btn-lg btn-success btn-block">Login</button>
-                        </fieldset>
+                    <fieldset>
+                        <div class="form-group">
+                            <input class="form-control" placeholder="User" name="txt-user" type="text" autofocus>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" placeholder="Password" name="txt-password" type="password" value="">
+                        </div>
+                        <button href="index.html" class="btn btn-lg btn-success btn-block">Login</button>
+                    </fieldset>
                     <?php
-                        echo form_close();
+                    echo form_close();
                     ?>
                 </div>
             </div>
