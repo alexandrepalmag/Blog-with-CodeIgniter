@@ -41,4 +41,12 @@ form found in the category.php file */
         $this->db->where('md5(id)',$id);
         return $this->db->delete('category');
     }
+
+    public function category_list($id)
+    {
+        $this->db->from('category');
+        $this->db->where('md5(id)',$id);
+        return $this->db->get()->result();
+    }
+
 }

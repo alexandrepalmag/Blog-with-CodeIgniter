@@ -53,13 +53,13 @@ class Category extends CI_Controller{
     public function change($id)
     {   //copied from the index () method
         $this->load->library('table');
-        $datas['categories'] = $this->categories;
+        $datas['categories'] = $this->modelcategories->category_list($id);
         $datas['title'] = 'Control Panel';
         $datas['subtitle'] = 'Category';
         //end
         $this->load->view('backend/template/html-header', $datas);
         $this->load->view('backend/template/template');
-        $this->load->view('backend/category');
+        $this->load->view('backend/change-category');
         $this->load->view('backend/template/html-footer');
     }
 
