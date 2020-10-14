@@ -43,7 +43,7 @@ class Users extends CI_Controller
             'Password',
             'required|min_length[4]'
         );
-        if ($this->form_validation->run() == false) {
+        if ($this->form_validation->run() == FALSE) {
             $this->loginPage();
         } else {
             $user = $this->input->post('txt-user');
@@ -51,17 +51,25 @@ class Users extends CI_Controller
             $this->db->where('user', $user);
             $this->db->where('password', $password);
             $loggedInUser = $this->db->get('user')->result();
-            if(count($loggedInUser) == 1) {
+            if (count($loggedInUser) == 1) {
                 $sessionDatas['loggedInUser'] = $loggedInUser[0];
                 $sessionDatas['logged'] = TRUE;
                 $this->session->set_userdata($sessionDatas);
                 redirect(base_url('admin'));
-            }else{
+            } else {
                 $sessionDatas['loggedInUser'] = NULL;
                 $sessionDatas['logged'] = FALSE;
                 $this->session->set_userdata($sessionDatas);
                 redirect(base_url('admin/login'));
             }
         }
+    }
+
+    public function logout()
+    {
+        $sessionDatas['loggedInUser'] = NULL;
+        $sessionDatas['logged'] = FALSE;
+        $this->session->set_userdata($sessionDatas);
+        redirect(base_url('admin/login'));
     }
 }
