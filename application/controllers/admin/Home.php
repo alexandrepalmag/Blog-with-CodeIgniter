@@ -6,6 +6,10 @@ class Home extends CI_Controller{
     public function __construct()
     {
         parent::__construct();
+        //Protection of administration pages.
+        if(!$this->session->userdata('loggedInUser')) {
+            redirect(base_url('admin/login'));
+        }
     }
 
     public function index()

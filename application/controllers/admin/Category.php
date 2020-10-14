@@ -8,6 +8,11 @@ class Category extends CI_Controller
     {
         parent::__construct();
 
+        //Protection of administration pages.
+        if(!$this->session->userdata('loggedInUser')) {
+            redirect(base_url('admin/login'));
+        }
+
         $this->load->model('CategoriesModel', 'modelcategories');
         $this->categories = $this->modelcategories->listCategories();
     }
