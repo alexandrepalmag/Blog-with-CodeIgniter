@@ -11,12 +11,16 @@ class Users extends CI_Controller
 
     public function index()
     {
+        //Protection of administration pages.
+        if (!$this->session->userdata('loggedInUser')) {
+            redirect(base_url('admin/login'));
+        }
         $datas['title'] = 'Control Panel';
-        $datas['subtitle'] = 'Home';
+        $datas['subtitle'] = 'Users';
         //end
         $this->load->view('backend/template/html-header', $datas);
         $this->load->view('backend/template/template');
-        $this->load->view('backend/home');
+        $this->load->view('backend/users');
         $this->load->view('backend/template/html-footer');
     }
 
