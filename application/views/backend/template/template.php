@@ -19,7 +19,7 @@
                         <a href="<?php echo base_url('admin/post') ?>"><i class="fa fa-edit fa-fw"></i> Posts</a>
                     </li>
                     <li>
-                        <a href="<?php echo base_url('admin/user') ?>"><i class="fa fa-wrench fa-fw"></i> Users</a>
+                        <a href="<?php echo base_url('admin/users') ?>"><i class="fa fa-wrench fa-fw"></i> Users</a>
                     </li>
                     <li>
                         <a href="<?php echo base_url('admin/users/logout') ?>"><i class="fa fa-sign-out fa-fw"></i> Logoff</a>
