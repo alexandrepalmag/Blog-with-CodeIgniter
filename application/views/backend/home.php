@@ -13,7 +13,13 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h2>Welcome to the administrative page of your blog!!!</h2>
+                            <h2> Hello
+                                <?php
+                                echo $this->session->userdata('loggedInUser')->user;
+                                ?>
+                                !!!
+                            </h2>
+                            <h3>Welcome to the administrative page of your blog!!!</h3>
                         </div>
                     </div>
                 </div>
