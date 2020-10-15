@@ -15,6 +15,8 @@ class Users extends CI_Controller
         if (!$this->session->userdata('loggedInUser')) {
             redirect(base_url('admin/login'));
         }
+        $this->load->model('usersModel', 'modelusers');
+        
         $datas['title'] = 'Control Panel';
         $datas['subtitle'] = 'Users';
         //end
