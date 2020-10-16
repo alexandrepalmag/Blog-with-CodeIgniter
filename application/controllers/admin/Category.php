@@ -42,7 +42,7 @@ class Category extends CI_Controller
             $this->index();
         } else {
             $title = $this->input->post('txt-category');
-            if ($this->modelcategories->addCategory($title)) {
+            if ($this->modelcategories->add($title)) {
                 redirect(base_url('admin/category'));
             } else {
                 echo "It was not possible to register the category. Try again!";
@@ -53,7 +53,7 @@ class Category extends CI_Controller
     //method to delete a category in database
     public function delete($id)
     {
-        if ($this->modelcategories->deleteCategory($id)) {
+        if ($this->modelcategories->delete($id)) {
             redirect(base_url('admin/category'));
         } else {
             echo "It was not possible to delete the category. Try again!";
@@ -63,7 +63,7 @@ class Category extends CI_Controller
     public function change($id)
     {   //copied from the index () method
         $this->load->library('table');
-        $datas['categories'] = $this->modelcategories->category_list($id);
+        $datas['categories'] = $this->modelcategories->list($id);
         $datas['title'] = 'Control Panel';
         $datas['subtitle'] = 'Category';
         //end
@@ -86,7 +86,7 @@ class Category extends CI_Controller
         } else {
             $title = $this->input->post('txt-category');
             $id = $this->input->post('txt-id');
-            if ($this->modelcategories->updateCategory($title, $id)) {
+            if ($this->modelcategories->update($title, $id)) {
                 redirect(base_url('admin/category'));
             } else {
                 echo "It was not possible update the category. Try again!";
