@@ -17,8 +17,8 @@ class Users extends CI_Controller
         }
 
         $this->load->library('table');
-
         $this->load->model('UsersModel', 'modelusers');
+
         $datas['users'] = $this->modelusers->list_authors();
         
         $datas['title'] = 'Control Panel';
@@ -36,7 +36,7 @@ class Users extends CI_Controller
         if (!$this->session->userdata('loggedInUser')) {
             redirect(base_url('admin/login'));
         }
-
+        $this->load->model('UsersModel', 'modelusers');
         $this->load->library('form_validation');
         $this->form_validation->set_rules(
             'txt-name',
@@ -84,9 +84,10 @@ class Users extends CI_Controller
         }
     }
 
-    //method to delete a category in database
+    //method to delete a user in database
     public function delete($id)
     {
+        $this->load->model('UsersModel', 'modelusers');
         //Protection of administration pages.
         if (!$this->session->userdata('loggedInUser')) {
             redirect(base_url('admin/login'));
@@ -105,7 +106,7 @@ class Users extends CI_Controller
         if (!$this->session->userdata('loggedInUser')) {
             redirect(base_url('admin/login'));
         }
-
+        $this->load->model('UsersModel', 'modelusers');
         //copied from the index () method
         $this->load->library('table');
         $datas['categories'] = $this->modelcategories->list($id);
@@ -124,7 +125,7 @@ class Users extends CI_Controller
         if (!$this->session->userdata('loggedInUser')) {
             redirect(base_url('admin/login'));
         }
-
+        $this->load->model('UsersModel', 'modelusers');
         $this->load->library('form_validation');
         $this->form_validation->set_rules(
             'txt-category',
