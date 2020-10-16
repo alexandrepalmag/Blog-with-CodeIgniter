@@ -27,7 +27,7 @@ class CategoriesModel extends CI_Model
 
     /* Receive data that is sent from the "Category Name"
 form found in the category.php file */
-    public function addCategory($title)
+    public function add($title)
     {
         $datas['title'] = $title;
         return $this->db->insert('category', $datas);
@@ -37,19 +37,19 @@ form found in the category.php file */
     deleteCategory
     Receive data that is sent from the "Category Name"
     form found in the Category.php file*/
-    public function deleteCategory($id){
+    public function delete($id){
         $this->db->where('md5(id)',$id);
         return $this->db->delete('category');
     }
 
-    public function category_list($id)
+    public function list($id)
     {
         $this->db->from('category');
         $this->db->where('md5(id)',$id);
         return $this->db->get()->result();
     }
 
-    public function updateCategory($title,$id)
+    public function update($title,$id)
     {
         $datas['title']=$title;
         $this->db->where('id',$id);
