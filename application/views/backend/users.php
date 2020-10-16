@@ -63,8 +63,8 @@
                             foreach ($users as $user) {
                                 $userName = $user->name;
                                 $photoUser = "photo";
-                                $change = anchor(base_url('admin/user/change/' . md5($user->id)), '<button class="btn btn-info" aria-label="Delete"><i class="fa fa-pencil-square-o"></i></button>');
-                                $delete = anchor(base_url('admin/user/delete/' . md5($user->id)), '<button class="btn btn-danger" aria-label="Delete"><i class="fa fa-trash fa-lg"></i></button>');
+                                $change = anchor(base_url('admin/users/change/' . md5($user->id)), '<button class="btn btn-info" aria-label="Delete"><i class="fa fa-pencil-square-o"></i></button>');
+                                $delete = anchor(base_url('admin/users/delete/' . md5($user->id)), '<button class="btn btn-danger" aria-label="Delete"><i class="fa fa-trash fa-lg"></i></button>');
 
                                 $this->table->add_row($photoUser, $userName, $change, $delete);
                             }
