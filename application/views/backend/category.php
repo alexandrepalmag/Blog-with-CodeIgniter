@@ -5,7 +5,6 @@
         </div>
         
     </div>
-    <!-- /.row -->
     <div class="row">
         <div class="col-lg-6">
             <div class="panel panel-default">
@@ -28,15 +27,10 @@
                             echo form_close();
                             ?>
                         </div>
-
                     </div>
-                    <!-- /.row (nested) -->
                 </div>
-                <!-- /.panel-body -->
             </div>
-            <!-- /.panel -->
         </div>
-        <!-- /.col-lg-6 -->
         <div class="col-lg-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -54,7 +48,6 @@
 
                                 $this->table->add_row($getName, $change, $delete);
                             }
-
                             $this->table->set_template(array(
                                 'table_open' => '<table class="table">'
                             ));
@@ -62,15 +55,10 @@
                             ?>
                         </div>
                     </div>
-                    <!-- /.row (nested) -->
                 </div>
-                <!-- /.panel-body -->
             </div>
-            <!-- /.panel -->
         </div>
-        <!-- /.col-lg-6 -->
     </div>
-    <!-- /.row -->
 </div>
 
 <!-- <form role="form">
