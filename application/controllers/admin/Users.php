@@ -174,7 +174,7 @@ class Users extends CI_Controller
             $user = $this->input->post('txt-user');
             $password = $this->input->post('txt-password');
             $this->db->where('user', $user);
-            $this->db->where('password', $password);
+            $this->db->where('password', md5($password));
             $loggedInUser = $this->db->get('user')->result();
             if (count($loggedInUser) == 1) {
                 $sessionDatas['loggedInUser'] = $loggedInUser[0];
