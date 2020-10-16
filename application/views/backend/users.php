@@ -18,8 +18,28 @@
                             echo form_open('admin/users/insert');
                             ?>
                             <div class="form-group">
-                                <label id="txt-category">Category Name</label>
-                                <input type="text" id="txt-category" name="txt-category" class="form-control" placeholder="Enter category name...">
+                                <label id="txt-name">User Name</label>
+                                <input type="text" id="txt-name" name="txt-name" class="form-control" placeholder="Enter user name...">
+                            </div>
+                            <div class="form-group">
+                                <label id="txt-email">Email</label>
+                                <input type="text" id="txt-email" name="txt-email" class="form-control" placeholder="Enter user email...">
+                            </div>
+                            <div class="form-group">
+                                <label id="txt-historic">Historic</label>
+                                <textarea id="txt-historic" name="txt-historic" class="form-control"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label id="txt-user">User</label>
+                                <input type="text" id="txt-user" name="txt-user" class="form-control" placeholder="Enter user...">
+                            </div>
+                            <div class="form-group">
+                                <label id="txt-password">Password</label>
+                                <input type="password" id="txt-password" name="txt-password" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label id="txt-confirmPassword">Confirm Password</label>
+                                <input type="password" id="txt-confirmPassword" name="txt-confirmPassord" class="form-control">
                             </div>
                             <button type="submit" class="btn btn-default">Register</button>
                             <?php
