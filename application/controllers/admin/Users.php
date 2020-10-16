@@ -29,6 +29,116 @@ class Users extends CI_Controller
         $this->load->view('backend/users');
         $this->load->view('backend/template/html-footer');
     }
+//methods to edit datas user
+    public function insert()
+    {
+        //Protection of administration pages.
+        if (!$this->session->userdata('loggedInUser')) {
+            redirect(base_url('admin/login'));
+        }
+
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules(
+            'txt-name',
+            'User Name',
+            'required|min_length[3]'
+        );
+        $this->form_validation->set_rules(
+            'txt-email',
+            'Email',
+            'required|valid_email'
+        );
+        $this->form_validation->set_rules(
+            'txt-historic',
+            'Historic',
+            'required|min_length[18]'
+        );
+        $this->form_validation->set_rules(
+            'txt-user',
+            'User',
+            'required|min_length[3]|is_unique[user.user]'
+        );
+        $this->form_validation->set_rules(
+            'txt-password',
+            'Password',
+            'required|min_length[4]'
+        );
+        $this->form_validation->set_rules(
+            'txt-confirmPassword',
+            'Confirm Password',
+            'matches[txt-password]'
+        );
+        if ($this->form_validation->run() == false) {
+            $this->index();
+        } else {
+            $title = $this->input->post('txt-category');
+            if ($this->modelcategories->addCategory($title)) {
+                redirect(base_url('admin/category'));
+            } else {
+                echo "It was not possible to register the category. Try again!";
+            }
+        }
+    }
+
+    //method to delete a category in database
+    public function delete($id)
+    {
+        //Protection of administration pages.
+        if (!$this->session->userdata('loggedInUser')) {
+            redirect(base_url('admin/login'));
+        }
+
+        if ($this->modelcategories->deleteCategory($id)) {
+            redirect(base_url('admin/category'));
+        } else {
+            echo "It was not possible to delete the category. Try again!";
+        }
+    }
+
+    public function change($id)
+    {   
+        //Protection of administration pages.
+        if (!$this->session->userdata('loggedInUser')) {
+            redirect(base_url('admin/login'));
+        }
+
+        //copied from the index () method
+        $this->load->library('table');
+        $datas['categories'] = $this->modelcategories->category_list($id);
+        $datas['title'] = 'Control Panel';
+        $datas['subtitle'] = 'Category';
+        //end
+        $this->load->view('backend/template/html-header', $datas);
+        $this->load->view('backend/template/template');
+        $this->load->view('backend/change-category');
+        $this->load->view('backend/template/html-footer');
+    }
+
+    public function saveEditions()
+    {
+        //Protection of administration pages.
+        if (!$this->session->userdata('loggedInUser')) {
+            redirect(base_url('admin/login'));
+        }
+
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules(
+            'txt-category',
+            'Category Name',
+            'required|min_length[4]|is_unique[category.title]'
+        );
+        if ($this->form_validation->run() == false) {
+            $this->index();
+        } else {
+            $title = $this->input->post('txt-category');
+            $id = $this->input->post('txt-id');
+            if ($this->modelcategories->updateCategory($title, $id)) {
+                redirect(base_url('admin/category'));
+            } else {
+                echo "It was not possible update the category. Try again!";
+            }
+        }
+    }
 
     public function loginPage()
     {
