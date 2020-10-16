@@ -68,12 +68,16 @@ class Users extends CI_Controller
             'Confirm Password',
             'required|matches[txt-password]'
         );
-        if ($this->form_validation->run() == false) {
+        if ($this->form_validation->run() == FALSE) {
             $this->index();
         } else {
-            $title = $this->input->post('txt-category');
-            if ($this->modelcategories->addCategory($title)) {
-                redirect(base_url('admin/category'));
+            $name = $this->input->post('txt-name');
+            $email = $this->input->post('txt-email');
+            $historic = $this->input->post('txt-historic');
+            $user = $this->input->post('txt-user');
+            $password = $this->input->post('txt-password');
+            if ($this->modelusers->add($name,$email,$historic,$user,$password)) {
+                redirect(base_url('admin/users'));
             } else {
                 echo "It was not possible to register the category. Try again!";
             }
@@ -88,8 +92,8 @@ class Users extends CI_Controller
             redirect(base_url('admin/login'));
         }
 
-        if ($this->modelcategories->deleteCategory($id)) {
-            redirect(base_url('admin/category'));
+        if ($this->modelusers->delete($id)) {
+            redirect(base_url('admin/users'));
         } else {
             echo "It was not possible to delete the category. Try again!";
         }
@@ -104,7 +108,7 @@ class Users extends CI_Controller
 
         //copied from the index () method
         $this->load->library('table');
-        $datas['categories'] = $this->modelcategories->category_list($id);
+        $datas['categories'] = $this->modelcategories->list($id);
         $datas['title'] = 'Control Panel';
         $datas['subtitle'] = 'Category';
         //end
@@ -132,7 +136,7 @@ class Users extends CI_Controller
         } else {
             $title = $this->input->post('txt-category');
             $id = $this->input->post('txt-id');
-            if ($this->modelcategories->updateCategory($title, $id)) {
+            if ($this->modelcategories->update($title, $id)) {
                 redirect(base_url('admin/category'));
             } else {
                 echo "It was not possible update the category. Try again!";
