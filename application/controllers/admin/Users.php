@@ -66,7 +66,7 @@ class Users extends CI_Controller
         $this->form_validation->set_rules(
             'txt-confirmPassword',
             'Confirm Password',
-            'matches[txt-password]'
+            'required|matches[txt-password]'
         );
         if ($this->form_validation->run() == false) {
             $this->index();
