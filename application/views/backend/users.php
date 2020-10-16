@@ -41,8 +41,8 @@
                         <div class="col-lg-12">
                             <?php
                             $this->table->set_heading("Photo", "User Name", "Change", "Delete");
-                            foreach ($Users as $user) { 
-                                $userName = $user->title;
+                            foreach ($users as $user) { 
+                                $userName = $user->name;
                                 $photoUser = "photo";
                                 $change = anchor(base_url('admin/user/change/' . md5($user->id)), '<button class="btn btn-info" aria-label="Delete"><i class="fa fa-pencil-square-o"></i></button>');
                                 $delete = anchor(base_url('admin/user/delete/' . md5($user->id)), '<button class="btn btn-danger" aria-label="Delete"><i class="fa fa-trash fa-lg"></i></button>');
