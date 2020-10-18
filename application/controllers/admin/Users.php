@@ -108,14 +108,13 @@ class Users extends CI_Controller
         }
         $this->load->model('UsersModel', 'modelusers');
         //copied from the index () method
-        $this->load->library('table');
-        $datas['categories'] = $this->modelcategories->list($id);
+        $datas['users'] = $this->modelusers->listUser($id);
         $datas['title'] = 'Control Panel';
-        $datas['subtitle'] = 'Category';
+        $datas['subtitle'] = 'Users';
         //end
         $this->load->view('backend/template/html-header', $datas);
         $this->load->view('backend/template/template');
-        $this->load->view('backend/change-category');
+        $this->load->view('backend/change-user');
         $this->load->view('backend/template/html-footer');
     }
 
