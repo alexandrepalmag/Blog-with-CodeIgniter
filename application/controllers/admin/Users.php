@@ -106,7 +106,7 @@ class Users extends CI_Controller
         if (!$this->session->userdata('loggedInUser')) {
             redirect(base_url('admin/login'));
         }
-        $this->load->model('UsersModel', 'modelusers');
+        $this->load->model('usersmodel', 'modelusers');
         //copied from the index () method
         $datas['users'] = $this->modelusers->listUser($id);
         $datas['title'] = 'Control Panel';
@@ -154,7 +154,7 @@ class Users extends CI_Controller
         $this->load->view('backend/template/html-footer');
     }
 
-    public function login()
+    public function login()  
     {
         $this->load->library('form_validation');
         $this->form_validation->set_rules(

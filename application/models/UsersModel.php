@@ -56,4 +56,12 @@ public function add($name,$email,$historic,$user,$password)
         return $this->db->delete('user');
     }
 
+    public function listUser($id)
+    {
+        $this->db->select('id, name, historic,email,user');
+        $this->db->from('user');
+        $this->db->where('md5(id)',$id);
+        return $this->db->get()->result();
+    }
+
 }
