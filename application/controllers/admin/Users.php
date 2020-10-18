@@ -114,7 +114,7 @@ class Users extends CI_Controller
         //end
         $this->load->view('backend/template/html-header', $datas);
         $this->load->view('backend/template/template');
-        $this->load->view('backend/change-user');
+        $this->load->view('backend/change-users');
         $this->load->view('backend/template/html-footer');
     }
 
@@ -124,6 +124,7 @@ class Users extends CI_Controller
         if (!$this->session->userdata('loggedInUser')) {
             redirect(base_url('admin/login'));
         }
+        
         $this->load->model('UsersModel', 'modelusers');
         $this->load->library('form_validation');
         $this->form_validation->set_rules(
