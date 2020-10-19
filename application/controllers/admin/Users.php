@@ -125,6 +125,36 @@ class Users extends CI_Controller
             redirect(base_url('admin/login'));
         }
         
+        $this->form_validation->set_rules(
+            'txt-name',
+            'User Name',
+            'required|min_length[3]'
+        );
+        $this->form_validation->set_rules(
+            'txt-email',
+            'Email',
+            'required|valid_email'
+        );
+        $this->form_validation->set_rules(
+            'txt-historic',
+            'Historic',
+            'required|min_length[18]'
+        );
+        $this->form_validation->set_rules(
+            'txt-user',
+            'User',
+            'required|min_length[3]|is_unique[user.user]'
+        );
+        $this->form_validation->set_rules(
+            'txt-password',
+            'Password',
+            'required|min_length[4]'
+        );
+        $this->form_validation->set_rules(
+            'txt-confirmPassword',
+            'Confirm Password',
+            'required|matches[txt-password]'
+        );
         $this->load->model('UsersModel', 'modelusers');
         $this->load->library('form_validation');
         $this->form_validation->set_rules(
@@ -132,15 +162,19 @@ class Users extends CI_Controller
             'Category Name',
             'required|min_length[4]|is_unique[category.title]'
         );
-        if ($this->form_validation->run() == false) {
+        if ($this->form_validation->run() == FALSE) {
             $this->index();
         } else {
-            $title = $this->input->post('txt-category');
+            $name = $this->input->post('txt-name');
+            $email = $this->input->post('txt-email');
+            $historic = $this->input->post('txt-historic');
+            $user = $this->input->post('txt-user');
+            $password = $this->input->post('txt-password');
             $id = $this->input->post('txt-id');
-            if ($this->modelcategories->update($title, $id)) {
-                redirect(base_url('admin/category'));
+            if ($this->modelusers->change($name,$email,$historic,$user,$password,$id)) {
+                redirect(base_url('admin/user'));
             } else {
-                echo "It was not possible update the category. Try again!";
+                echo "It was not possible update the user. Try again!";
             }
         }
     }
