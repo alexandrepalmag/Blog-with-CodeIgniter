@@ -44,10 +44,10 @@
                                 </div>
                                 <input type="hidden" name="txt-id" id="txt-id" value="<?php echo $user->id ?>">
                                 <button type="submit" class="btn btn-default">Update</button>
-                            <?php
-                            }
-                            echo form_close();
-                            ?>
+                                <?php
+                                echo form_close();
+
+                                ?>
                         </div>
                     </div>
                 </div>
@@ -61,7 +61,23 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-12">
-
+                        <?php
+                        $divopen = '<div class="form-group">';
+                        $divclose = '</div>';
+                                echo form_open_multipart('admin/users/newPhoto');
+                                echo form_hidden('id', md5($user->id));
+                                echo $divopen;
+                                $image = array('name' => 'userfile', 'id' => 'userfile', 'class' => 'form-control');
+                                echo form_upload($image);
+                                echo $divclose;
+                                echo $divopen;
+                                $button = array('name' => 'btn_add', 'id' => 'btn_add', 'class' => 'btn btn_default',
+                            'value' => 'Add new image');
+                                echo form_submit($button);
+                                echo $divclose;
+                                echo form_close();
+                            }
+                        ?>
                         </div>
                     </div>
                 </div>

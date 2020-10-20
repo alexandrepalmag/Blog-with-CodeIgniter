@@ -10,7 +10,7 @@ class UsersModel extends CI_Model
     public $img;
     public $historic;
     public $user;
-    public $npassword;
+    public $password;
 
     public function __construct()
     {
