@@ -15,7 +15,7 @@
                         <div class="col-lg-12">
                             <?php
                             echo validation_errors('<div class="alert alert-danger">', '</div>');
-                            echo form_open('admin/users/savechangesinusers');
+                            echo form_open('admin/users/saveEditions');
                             foreach ($users as $user) {
                             ?>
                                 <div class="form-group">
@@ -43,7 +43,7 @@
                                     <input type="password" id="txt-confirmPassword" name="txt-confirmPassword" class="form-control">
                                 </div>
                                 <input type="hidden" name="txt-id" id="txt-id" value="<?php echo $user->id ?>">
-                                <button type="submit" class="btn btn-default">Register</button>
+                                <button type="submit" class="btn btn-default">Update</button>
                             <?php
                             }
                             echo form_close();

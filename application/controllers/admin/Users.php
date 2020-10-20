@@ -20,7 +20,7 @@ class Users extends CI_Controller
         $this->load->model('UsersModel', 'modelusers');
 
         $datas['users'] = $this->modelusers->list_authors();
-        
+
         $datas['title'] = 'Control Panel';
         $datas['subtitle'] = 'Users';
         //end
@@ -29,7 +29,7 @@ class Users extends CI_Controller
         $this->load->view('backend/users');
         $this->load->view('backend/template/html-footer');
     }
-//methods to edit datas user
+    //methods to edit datas user
     public function insert()
     {
         //Protection of administration pages.
@@ -76,7 +76,7 @@ class Users extends CI_Controller
             $historic = $this->input->post('txt-historic');
             $user = $this->input->post('txt-user');
             $password = $this->input->post('txt-password');
-            if ($this->modelusers->add($name,$email,$historic,$user,$password)) {
+            if ($this->modelusers->add($name, $email, $historic, $user, $password)) {
                 redirect(base_url('admin/users'));
             } else {
                 echo "It was not possible to register the category. Try again!";
@@ -101,7 +101,7 @@ class Users extends CI_Controller
     }
 
     public function change($id)
-    {   
+    {
         //Protection of administration pages.
         if (!$this->session->userdata('loggedInUser')) {
             redirect(base_url('admin/login'));
@@ -114,7 +114,7 @@ class Users extends CI_Controller
         //end
         $this->load->view('backend/template/html-header', $datas);
         $this->load->view('backend/template/template');
-        $this->load->view('backend/change-users');
+        $this->load->view('backend/change-user');
         $this->load->view('backend/template/html-footer');
     }
 
@@ -124,7 +124,8 @@ class Users extends CI_Controller
         if (!$this->session->userdata('loggedInUser')) {
             redirect(base_url('admin/login'));
         }
-        
+        $this->load->model('usersmodel', 'modelusers');
+        $this->load->library('form_validation');
         $this->form_validation->set_rules(
             'txt-name',
             'User Name',
@@ -155,13 +156,6 @@ class Users extends CI_Controller
             'Confirm Password',
             'required|matches[txt-password]'
         );
-        $this->load->model('UsersModel', 'modelusers');
-        $this->load->library('form_validation');
-        $this->form_validation->set_rules(
-            'txt-category',
-            'Category Name',
-            'required|min_length[4]|is_unique[category.title]'
-        );
         if ($this->form_validation->run() == FALSE) {
             $this->index();
         } else {
@@ -171,12 +165,13 @@ class Users extends CI_Controller
             $user = $this->input->post('txt-user');
             $password = $this->input->post('txt-password');
             $id = $this->input->post('txt-id');
-            if ($this->modelusers->change($name,$email,$historic,$user,$password,$id)) {
-                redirect(base_url('admin/user'));
+            if ($this->modelusers->updateUser($name, $email, $historic, $user, $password, $id)) {
+                redirect(base_url('admin/users'));
             } else {
                 echo "It was not possible update the user. Try again!";
             }
         }
+       
     }
 
     public function loginPage()
@@ -189,7 +184,7 @@ class Users extends CI_Controller
         $this->load->view('backend/template/html-footer');
     }
 
-    public function login()  
+    public function login()
     {
         $this->load->library('form_validation');
         $this->form_validation->set_rules(

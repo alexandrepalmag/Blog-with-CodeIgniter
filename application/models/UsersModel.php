@@ -64,4 +64,15 @@ public function add($name,$email,$historic,$user,$password)
         return $this->db->get()->result();
     }
 
+    public function updateUser($name, $email, $historic, $user, $password, $id)
+    {
+        $datas['name']=$name;
+        $datas['email']=$email;
+        $datas['historic']=$historic;
+        $datas['user']=$user;
+        $datas['password']=md5($password);
+        $this->db->where('id',$id);
+        return $this->db->update('user',$datas);
+    }
+
 }
