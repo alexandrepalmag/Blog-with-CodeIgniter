@@ -174,6 +174,37 @@ class Users extends CI_Controller
        
     }
 
+    public function newPhoto()
+    {
+        //Protection of administration pages.
+        if (!$this->session->userdata('loggedInUser')) {
+            redirect(base_url('admin/login'));
+        }
+        $this->load->model('usersmodel', 'modelusers');
+
+        $id = $this->input->post('id');
+        $config['upload_path'] = './assets/frontend/img/users';
+        $config['allowed_types'] = 'jpg';
+        $config['file_name'] = $id.".jpg";
+        $config['overwrite'] = TRUE;
+        $this->load->library('upload', $config);
+
+        if(!$this->upload->do_upload()){
+            echo $this->upload->display_errors();
+        }else{
+            $config2['source_image'] = './assets/frontend/img/users'.$id.'.jpg';
+            $config2['create_thumb'] = FALSE;
+            $config2['width'] = 200;
+            $config2['height'] = 200;
+            $this->load->library('image_lib', $config2);
+            if($this->image_lib->resize()){
+                redirect(base_url('admin/users/change/'.$id));
+            }else{
+                echo $this->image_lib->display_errors();
+            }
+        }
+    }
+
     public function loginPage()
     {
         $datas['title'] = 'Control Panel';
