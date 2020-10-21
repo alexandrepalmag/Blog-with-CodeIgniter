@@ -171,7 +171,6 @@ class Users extends CI_Controller
                 echo "It was not possible update the user. Try again!";
             }
         }
-       
     }
 
     public function newPhoto()
@@ -185,21 +184,25 @@ class Users extends CI_Controller
         $id = $this->input->post('id');
         $config['upload_path'] = './assets/frontend/img/users';
         $config['allowed_types'] = 'jpg';
-        $config['file_name'] = $id.".jpg";
+        $config['file_name'] = $id . ".jpg";
         $config['overwrite'] = TRUE;
         $this->load->library('upload', $config);
 
-        if(!$this->upload->do_upload()){
+        if (!$this->upload->do_upload()) {
             echo $this->upload->display_errors();
-        }else{
-            $config2['source_image'] = './assets/frontend/img/users'.$id.'.jpg';
+        } else {
+            $config2['source_image'] = './assets/frontend/img/users' . $id . '.jpg';
             $config2['create_thumb'] = FALSE;
             $config2['width'] = 200;
             $config2['height'] = 200;
             $this->load->library('image_lib', $config2);
-            if($this->image_lib->resize()){
-                redirect(base_url('admin/users/change/'.$id));
-            }else{
+            if ($this->image_lib->resize()) {
+                if ($this->modelusers->change_img($id)) {
+                    redirect(base_url('admin/users/change/'.$id));
+                } else {
+                    echo "It was not possible update the user. Try again!";
+                }
+            } else {
                 echo $this->image_lib->display_errors();
             }
         }
