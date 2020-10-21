@@ -75,4 +75,11 @@ public function add($name,$email,$historic,$user,$password)
         return $this->db->update('user',$datas);
     }
 
+    public function change_img($id)
+    {
+        $datas['img'] = 1;
+        $this->db->where('md5(id)',$id);
+        return $this->db->update('user',$datas);
+    }
+
 }
