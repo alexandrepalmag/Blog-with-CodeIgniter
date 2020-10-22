@@ -61,9 +61,14 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-12">
+                            <?php echo img("assets/frontend/img/users/".md5($user->id).".jpg");?>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
                         <?php
-                        $divopen = '<div class="form-group">';
-                        $divclose = '</div>';
+                                $divopen = '<div class="form-group">';
+                                $divclose = '</div>';
                                 echo form_open_multipart('admin/users/newPhoto');
                                 echo form_hidden('id', md5($user->id));
                                 echo $divopen;
@@ -71,8 +76,10 @@
                                 echo form_upload($image);
                                 echo $divclose;
                                 echo $divopen;
-                                $button = array('name' => 'btn_add', 'id' => 'btn_add', 'class' => 'btn btn_default',
-                            'value' => 'Add new image');
+                                $button = array(
+                                    'name' => 'btn_add', 'id' => 'btn_add', 'class' => 'btn btn_default',
+                                    'value' => 'Add new image'
+                                );
                                 echo form_submit($button);
                                 echo $divclose;
                                 echo form_close();
