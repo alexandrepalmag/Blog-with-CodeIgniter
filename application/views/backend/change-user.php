@@ -11,8 +11,8 @@
                     <strong><?php echo 'Add New ' . $subtitle ?></strong>
                 </div>
                 <div class="panel-body">
-                    <div class="row">
-                        <div class="col-lg-12">
+                    <div class="row" style="padding-bottom: 10px;">
+                        <div class="col-lg-3 col-lg-offset-3">
                             <?php
                             echo validation_errors('<div class="alert alert-danger">', '</div>');
                             echo form_open('admin/users/saveEditions');

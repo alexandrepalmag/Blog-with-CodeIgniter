@@ -58,11 +58,20 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-12">
+                            <style>
+                                img {
+                                    width: 60px;
+                                }
+                            </style>
                             <?php
                             $this->table->set_heading("Photo", "User Name", "Change", "Delete");
                             foreach ($users as $user) {
                                 $userName = $user->name;
-                                $photoUser = "photo";
+                                if ($user->img == 1) {
+                                    $photoUser = img("assets/frontend/img/users/" . md5($user->id) . ".jpg");
+                                } else {
+                                    $photoUser = img("assets/frontend/img/noPhoto.png");
+                                }
                                 $change = anchor(base_url('admin/users/change/' . md5($user->id)), '<button class="btn btn-info" aria-label="Delete"><i class="fa fa-pencil-square-o"></i></button>');
                                 $delete = anchor(base_url('admin/users/delete/' . md5($user->id)), '<button class="btn btn-danger" aria-label="Delete"><i class="fa fa-trash fa-lg"></i></button>');
 
