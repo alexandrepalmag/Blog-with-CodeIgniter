@@ -58,7 +58,7 @@ public function add($name,$email,$historic,$user,$password)
 
     public function listUser($id)
     {
-        $this->db->select('id, name, historic,email,user');
+        $this->db->select('id, name, historic,email,user,img');
         $this->db->from('user');
         $this->db->where('md5(id)',$id);
         return $this->db->get()->result();

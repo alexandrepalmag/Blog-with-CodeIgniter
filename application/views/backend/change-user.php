@@ -65,7 +65,7 @@
                                 if($user->img == 1) {
                                     echo img("assets/frontend/img/users/" . md5($user->id) . ".jpg");
                                 }else{
-                                    echo img(("assets/frontend/img/noPhoto.png");
+                                    echo img("assets/frontend/img/noPhoto.png");
                                 }
                             ?>
                         </div>
