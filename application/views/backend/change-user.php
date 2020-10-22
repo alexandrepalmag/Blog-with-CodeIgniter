@@ -61,7 +61,13 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-12">
-                            <?php echo img("assets/frontend/img/users/".md5($user->id).".jpg");?>
+                            <?php
+                                if($user->img == 1) {
+                                    echo img("assets/frontend/img/users/" . md5($user->id) . ".jpg");
+                                }else{
+                                    echo img(("assets/frontend/img/noPhoto.png");
+                                }
+                            ?>
                         </div>
                     </div>
                     <div class="row">
