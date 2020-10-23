@@ -56,4 +56,9 @@ class PublicationsModel extends CI_Model
         return $this->db->get()->result();
     }
 
+    public function listPublication() {
+        $this->db->order_by('data', 'DESC');
+        return $this->db->get('posts')->result();
+    }
+
 }
