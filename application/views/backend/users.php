@@ -14,8 +14,8 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <?php
-                            echo validation_errors('<div class="alert alert-danger">', '</div>');
-                            echo form_open('admin/users/insert');
+                                echo validation_errors('<div class="alert alert-danger">', '</div>');
+                                echo form_open('admin/users/insert');
                             ?>
                             <div class="form-group">
                                 <label id="txt-name">User Name</label>
@@ -62,7 +62,7 @@
                                 img {
                                     width: 60px;
                                 }
-                            </style>
+                            </style>                                       
                             <?php
                             $this->table->set_heading("Photo", "User Name", "Change", "Delete");
                             foreach ($users as $user) {
@@ -89,31 +89,3 @@
         </div>
     </div>
 </div>
-
-<!-- <form role="form">
-                                <div class="form-group">
-                                    <label>Title</label>
-                                    <input class="form-control" placeholder="Entre com o texto">
-                                </div>
-                                <div class="form-group">
-                                    <label>Featured Photo</label>
-                                    <input type="file">
-                                </div>
-                                <div class="form-group">
-                                    <label>Content</label>
-                                    <textarea class="form-control" rows="3"></textarea>
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Selects</label>
-                                    <select class="form-control">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
-                                    </select>
-                                </div>
-                                <button type="submit" class="btn btn-default">Register</button>
-                                <button type="reset" class="btn btn-default">Clear</button>
-                            </form> -->
