@@ -94,4 +94,5 @@ class Publication extends CI_Controller
             }
         }
     }
+
 }
