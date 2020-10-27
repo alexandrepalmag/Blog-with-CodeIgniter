@@ -16,7 +16,7 @@
                         <a href="<?php echo base_url('admin/category') ?>"><i class="fa fa-sitemap fa-fw"></i> Categories</a>
                     </li>
                     <li>
-                        <a href="<?php echo base_url('admin/post') ?>"><i class="fa fa-edit fa-fw"></i> Posts</a>
+                        <a href="<?php echo base_url('admin/publication') ?>"><i class="fa fa-edit fa-fw"></i> Posts</a>
                     </li>
                     <li>
                         <a href="<?php echo base_url('admin/users') ?>"><i class="fa fa-wrench fa-fw"></i> Users</a>
