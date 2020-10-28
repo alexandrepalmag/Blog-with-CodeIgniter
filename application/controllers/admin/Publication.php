@@ -55,10 +55,10 @@ class Publication extends CI_Controller
             $title = $this->input->post('txt-title');
             $subtitle = $this->input->post('txt-subtitle');
             $content = $this->input->post('txt-content');
-            $datapub = $this->input->post('txt-date');
+            $datepub = $this->input->post('txt-date');
             $category = $this->input->post('select-category');
             $userpub = $this->input->post('txt-user');
-            if ($this->modelpublication->add($title,$subtitle,$content,$datapub,$category,$userpub)) {
+            if ($this->modelpublication->add($title,$subtitle,$content,$datepub,$category,$userpub)) {
                 redirect(base_url('admin/publication'));
             } else {
                 echo "It was not possible to register the category. Try again!";
@@ -69,8 +69,8 @@ class Publication extends CI_Controller
     //method to delete a category in database
     public function delete($id)
     {
-        if ($this->modelcategories->delete($id)) {
-            redirect(base_url('admin/category'));
+        if ($this->modelpublication->delete($id)) {
+            redirect(base_url('admin/publication'));
         } else {
             echo "It was not possible to delete the category. Try again!";
         }
