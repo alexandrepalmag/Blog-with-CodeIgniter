@@ -61,4 +61,25 @@ class PublicationsModel extends CI_Model
         return $this->db->get('posts')->result();
     }
 
+    /* Receive data that is sent from the "Publication Title"
+form found in the publication.php file */
+public function add($title,$subtitle,$content,$datepub,$category,$userpub)
+{
+    $datas['title'] = $title;
+    $datas['subtitle'] = $subtitle;
+    $datas['content'] = $content;
+    $datas['user'] = $userpub;
+    $datas['date'] = $datepub;
+    $datas['category'] = $category;
+    return $this->db->insert('posts', $datas);
+}
+
+/* method to delete a publication in database
+    Receive data that is sent from the "Publication Title"
+    form found in the Publication.php file*/
+    public function delete($id){
+        $this->db->where('md5(id)',$id);
+        return $this->db->delete('posts');
+    }
+
 }
