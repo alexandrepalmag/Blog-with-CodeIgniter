@@ -18,6 +18,14 @@
                             echo form_open('admin/users/insert');
                             ?>
                             <div class="form-group">
+                                <label id="select-category">Selects</label>
+                                <select class="form-control">
+                                    <?php foreach ($categories as $category) { ?>
+                                        <option value="<?php echo $category->id ?>"><?php $category->title ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                            <div class="form-group">
                                 <label id="txt-title">Title</label>
                                 <input type="text" id="txt-title" name="txt-title" class="form-control" placeholder="Enter with title..." value="<?php echo set_value('txt-title'); ?>">
                             </div>
@@ -27,24 +35,13 @@
                             </div>
                             <div class="form-group">
                                 <label id="txt-content">Content</label>
-                                <input type="text" id="txt-content" name="txt-content" class="form-control" placeholder="Enter user content..." value="<?php echo set_value('txt-content'); ?>">
+                                <textarea type="text" id="txt-content" name="txt-content" class="form-control" placeholder="Enter user content..." value="<?php echo set_value('txt-content'); ?>"></textarea>
                             </div>
                             <div class="form-group">
                                 <label id="txt-date">Date</label>
-                                <textarea id="txt-date" name="txt-date" class="form-control"><?php echo set_value('txt-date'); ?></textarea>
+                                <input type="datatime-local" id="txt-date" name="txt-date" class="form-control"><?php echo set_value('txt-date'); ?>
                             </div>
-                            <div class="form-group">
-                                <label id="txt-user">User</label>
-                                <input type="text" id="txt-user" name="txt-user" class="form-control" placeholder="Enter user..." value="<?php echo set_value('txt-user'); ?>">
-                            </div>
-                            <div class="form-group">
-                                <label id="txt-password">Password</label>
-                                <input type="password" id="txt-password" name="txt-password" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label id="txt-confirmPassword">Confirm Password</label>
-                                <input type="password" id="txt-confirmPassword" name="txt-confirmPassword" class="form-control">
-                            </div>
+                            <input type="hidden" name="txt-user" id="txt-user" value="<?php echo $this->session->userdata('loggedInUser')->id; ?>">
                             <button type="submit" class="btn btn-default">Register</button>
                             <?php
                             echo form_close();
@@ -72,11 +69,10 @@
                             foreach ($publications as $publication) {
                                 $title = $publication->title;
                                 $photopub = "Photo";
-                                //$date = postIn($publication->title);
+                                $date = $publication->title;
                                 $change = anchor(base_url('admin/publication/change/' . md5($publication->id)), '<button class="btn btn-info" aria-label="Delete"><i class="fa fa-pencil-square-o"></i></button>');
                                 $delete = anchor(base_url('admin/publication/delete/' . md5($publication->id)), '<button class="btn btn-danger" aria-label="Delete"><i class="fa fa-trash fa-lg"></i></button>');
-
-                                $this->table->add_row($photopub, $titlte, $date, $change, $delete);
+                                $this->table->add_row($photopub, $title, $date, $change, $delete);
                             }
                             $this->table->set_template(array(
                                 'table_open' => '<table class="table">'

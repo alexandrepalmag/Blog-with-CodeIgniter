@@ -13,7 +13,7 @@ class Publication extends CI_Controller
             redirect(base_url('admin/login'));
         }
         $this->load->model('CategoriesModel', 'modelcategories');
-        $this->load->model('PublicationsModel', 'modelpublication');
+        $this->load->model('publicationsmodel', 'modelpublication');
         $this->categories = $this->modelcategories->listCategories();
     }
 
