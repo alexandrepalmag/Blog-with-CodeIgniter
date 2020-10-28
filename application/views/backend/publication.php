@@ -8,18 +8,18 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <strong><?php echo 'Add New ' . $subtitle ?></strong>
+                    <strong><?php echo 'Add New'.$subtitle ?></strong>
                 </div>
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-12">
                             <?php
                             echo validation_errors('<div class="alert alert-danger">', '</div>');
-                            echo form_open('admin/users/insert');
+                            echo form_open('admin/publication/insert');
                             ?>
                             <div class="form-group">
                                 <label id="select-category">Categories</label>
-                                <select class="form-control">
+                                <select id="select-category" name="select-category" class="form-control">
                                     <?php foreach ($categories as $category) { ?>
                                         <option value="<?php echo $category->id ?>"><?php echo $category->title ?></option>
                                     <?php } ?>
