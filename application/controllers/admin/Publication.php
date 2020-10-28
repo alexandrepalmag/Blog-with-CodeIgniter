@@ -35,9 +35,14 @@ class Publication extends CI_Controller
     {
         $this->load->library('form_validation');
         $this->form_validation->set_rules(
-            'txt-category',
-            'Category Name',
-            'required|min_length[4]|is_unique[category.title]'
+            'txt-title',
+            'Title',
+            'required|min_length[4]'
+        );
+        $this->form_validation->set_rules(
+            'txt-subtitle',
+            'Subtitle',
+            'required|min_length[4]'
         );
         if ($this->form_validation->run() == false) {
             $this->index();

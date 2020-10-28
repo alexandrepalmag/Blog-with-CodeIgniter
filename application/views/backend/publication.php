@@ -18,10 +18,10 @@
                             echo form_open('admin/users/insert');
                             ?>
                             <div class="form-group">
-                                <label id="select-category">Selects</label>
+                                <label id="select-category">Categories</label>
                                 <select class="form-control">
                                     <?php foreach ($categories as $category) { ?>
-                                        <option value="<?php echo $category->id ?>"><?php $category->title ?></option>
+                                        <option value="<?php echo $category->id ?>"><?php echo $category->title ?></option>
                                     <?php } ?>
                                 </select>
                             </div>
