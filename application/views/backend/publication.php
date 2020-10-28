@@ -39,7 +39,7 @@
                             </div>
                             <div class="form-group">
                                 <label id="txt-date">Date</label>
-                                <input type="datatime-local" id="txt-date" name="txt-date" class="form-control"><?php echo set_value('txt-date'); ?>
+                                <input type="datetime-local" id="txt-date" name="txt-date" class="form-control"><?php echo set_value('txt-date'); ?>
                             </div>
                             <input type="hidden" name="txt-user" id="txt-user" value="<?php echo $this->session->userdata('loggedInUser')->id; ?>">
                             <button type="submit" class="btn btn-default">Register</button>

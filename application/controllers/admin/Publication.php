@@ -44,12 +44,22 @@ class Publication extends CI_Controller
             'Subtitle',
             'required|min_length[4]'
         );
+        $this->form_validation->set_rules(
+            'txt-content',
+            'Content',
+            'required|min_length[20]'
+        );
         if ($this->form_validation->run() == false) {
             $this->index();
         } else {
-            $title = $this->input->post('txt-category');
-            if ($this->modelcategories->add($title)) {
-                redirect(base_url('admin/category'));
+            $title = $this->input->post('txt-title');
+            $subtitle = $this->input->post('txt-subtitle');
+            $content = $this->input->post('txt-content');
+            $datapub = $this->input->post('txt-date');
+            $category = $this->input->post('select-category');
+            $userpub = $this->input->post('txt-user');
+            if ($this->modelpublication->add($title,$subtitle,$content,$datapub,$category,$userpub)) {
+                redirect(base_url('admin/publication'));
             } else {
                 echo "It was not possible to register the category. Try again!";
             }
