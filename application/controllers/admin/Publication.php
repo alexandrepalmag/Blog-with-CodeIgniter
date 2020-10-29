@@ -58,7 +58,7 @@ class Publication extends CI_Controller
             $datepub = $this->input->post('txt-date');
             $category = $this->input->post('select-category');
             $userpub = $this->input->post('txt-user');
-            if ($this->modelpublication->add($title,$subtitle,$content,$datepub,$category,$userpub)) {
+            if ($this->modelpublication->add($title, $subtitle, $content, $datepub, $category, $userpub)) {
                 redirect(base_url('admin/publication'));
             } else {
                 echo "It was not possible to register the category. Try again!";
@@ -110,5 +110,4 @@ class Publication extends CI_Controller
             }
         }
     }
-
 }
