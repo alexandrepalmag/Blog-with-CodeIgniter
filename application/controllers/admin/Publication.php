@@ -81,11 +81,11 @@ class Publication extends CI_Controller
         $this->load->library('table');
         $datas['categories'] = $this->modelcategories->list($id);
         $datas['title'] = 'Control Panel';
-        $datas['subtitle'] = 'Category';
+        $datas['subtitle'] = 'Publication';
         //end
         $this->load->view('backend/template/html-header', $datas);
         $this->load->view('backend/template/template');
-        $this->load->view('backend/change-category');
+        $this->load->view('backend/change-publication');
         $this->load->view('backend/template/html-footer');
     }
 
