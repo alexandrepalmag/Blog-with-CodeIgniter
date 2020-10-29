@@ -80,6 +80,7 @@ class Publication extends CI_Controller
     {   //copied from the index () method
         $this->load->library('table');
         $datas['categories'] = $this->modelcategories->list($id);
+        $datas['publications'] = $this->modelpublication->list($id);
         $datas['title'] = 'Control Panel';
         $datas['subtitle'] = 'Publication';
         //end
