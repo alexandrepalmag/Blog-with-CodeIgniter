@@ -46,7 +46,6 @@
                                 <button type="submit" class="btn btn-default">Update</button>
                                 <?php
                                 echo form_close();
-
                                 ?>
                         </div>
                     </div>

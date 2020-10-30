@@ -21,7 +21,7 @@ class Publication extends CI_Controller
     {
         $this->load->library('table');
         $datas['categories'] = $this->categories;
-        $datas['publications'] = $this->modelpublication->listpublication();
+        $datas['publications'] = $this->modelpublication->listpublications();
         $datas['title'] = 'Control Panel';
         $datas['subtitle'] = 'Publication';
         //end
@@ -79,8 +79,8 @@ class Publication extends CI_Controller
     public function change($id)
     {   //copied from the index () method
         $this->load->library('table');
-        $datas['categories'] = $this->modelcategories->list($id);
-        $datas['publications'] = $this->modelpublication->list($id);
+        $datas['categories'] = $this->modelcategories->listCategories($id);
+        $datas['publications'] = $this->modelpublication->listpublications($id);
         $datas['title'] = 'Control Panel';
         $datas['subtitle'] = 'Publication';
         //end
