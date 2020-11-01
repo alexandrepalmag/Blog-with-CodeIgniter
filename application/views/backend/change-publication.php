@@ -22,7 +22,9 @@
                                     <label id="select-category">Categories</label>
                                     <select id="select-category" name="select-category" class="form-control">
                                         <?php foreach ($categories as $category) { ?>
-                                            <option value="<?php echo $category->id ?>"><?php echo $category->title ?></option>
+                                            <option value="<?php echo $category->id ?>" <?php if ($category->id == $publication->category) {
+                                                                                            echo "selected";
+                                                                                        } ?>><?php echo $category->title ?></option>
                                         <?php } ?>
                                     </select>
                                 </div>
@@ -40,8 +42,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label id="txt-date">Date</label>
-                                    <input type="datetime-local" id="txt-date" name="txt-date" class="form-control"
-                                    value="<?php echo strftime('%Y-%m-%dT%H:%M:%S', strtotime($publication->date)); ?>">
+                                    <input type="datetime-local" id="txt-date" name="txt-date" class="form-control" value="<?php echo strftime('%Y-%m-%dT%H:%M:%S', strtotime($publication->date)); ?>">
                                 </div>
                                 <button type="submit" class="btn btn-default">Save Changes</button>
                             <?php
@@ -60,7 +61,7 @@
                 </div>
                 <div class="panel-body">
                     <div class="row">
-                        <div class="col-lg-12">
+                        <div class="col-lg-8 col-lg-offset-1"> 
                             <?php
                             if ($publication->img == 1) {
                                 echo img("assets/frontend/img/publication/" . md5($publication->id) . ".jpg");
