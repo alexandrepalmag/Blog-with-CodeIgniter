@@ -94,13 +94,28 @@ class Publication extends CI_Controller
     {
         $this->load->library('form_validation');
         $this->form_validation->set_rules(
-            'txt-category',
-            'Category Name',
-            'required|min_length[4]|is_unique[category.title]'
+            'txt-title',
+            'Title',
+            'required|min_length[4]'
         );
-        if ($this->form_validation->run() == false) {
+        $this->form_validation->set_rules(
+            'txt-subtitle',
+            'Subtitle',
+            'required|min_length[4]'
+        );
+        $this->form_validation->set_rules(
+            'txt-content',
+            'Content',
+            'required|min_length[20]'
+        );
+        if ($this->form_validation->run() == FALSE) {
             $this->index();
         } else {
+            $title = $this->input->post('txt-title');
+            $subtitle = $this->input->post('txt-subtitle');
+            $content = $this->input->post('txt-content');
+            $datepub = $this->input->post('txt-date');
+            $category = $this->input->post('select-category');
             $title = $this->input->post('txt-category');
             $id = $this->input->post('txt-id');
             if ($this->modelcategories->update($title, $id)) {
