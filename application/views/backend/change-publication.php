@@ -44,6 +44,7 @@
                                     <label id="txt-date">Date</label>
                                     <input type="datetime-local" id="txt-date" name="txt-date" class="form-control" value="<?php echo strftime('%Y-%m-%dT%H:%M:%S', strtotime($publication->date)); ?>">
                                 </div>
+                                <input type="hidden" name="txt-id" value="<?php echo $publication->id ?>">
                                 <button type="submit" class="btn btn-default">Save Changes</button>
                             <?php
                                 echo form_close();
