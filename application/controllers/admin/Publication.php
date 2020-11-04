@@ -116,12 +116,11 @@ class Publication extends CI_Controller
             $content = $this->input->post('txt-content');
             $datepub = $this->input->post('txt-date');
             $category = $this->input->post('select-category');
-            $title = $this->input->post('txt-category');
             $id = $this->input->post('txt-id');
-            if ($this->modelcategories->update($title, $id)) {
-                redirect(base_url('admin/category'));
+            if ($this->modelpublication->update($title, $subtitle, $content, $datepub, $category, $id)) {
+                redirect(base_url('admin/publication'));
             } else {
-                echo "It was not possible update the category. Try again!";
+                echo "It was not possible update the publication. Try again!";
             }
         }
     }
