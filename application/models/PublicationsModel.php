@@ -87,4 +87,14 @@ public function add($title,$subtitle,$content,$datepub,$category,$userpub)
         return $this->db->delete('posts');
     }
 
+    public function change($title, $subtitle, $content, $datepub, $category, $id){
+        $datas['title'] = $title;
+        $datas['subtitle'] = $subtitle;
+        $datas['content'] = $content;
+        $datas['data'] = $datepub;
+        $datas['category'] = $category;
+        $this->db->where('id',$id);
+        return $this->db->update('posts', $datas);
+    }
+
 }
