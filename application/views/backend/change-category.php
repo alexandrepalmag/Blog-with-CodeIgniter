@@ -16,8 +16,8 @@
                         <div class="col-lg-12">
                             <?php
                             echo validation_errors('<div class="alert alert-danger">', '</div>');
-                            echo form_open('admin/category/saveEditions');
                             foreach ($categories as $category) {
+                            echo form_open('admin/category/saveEditions' .md5($category->id));
                             ?>
                                 <div class="form-group">
                                     <label id="txt-category">Category Name</label>

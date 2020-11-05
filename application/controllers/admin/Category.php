@@ -73,7 +73,7 @@ class Category extends CI_Controller
         $this->load->view('backend/template/html-footer');
     }
 
-    public function saveEditions()
+    public function saveEditions($idCrip)
     {
         $this->load->library('form_validation');
         $this->form_validation->set_rules(
@@ -82,7 +82,7 @@ class Category extends CI_Controller
             'required|min_length[4]|is_unique[category.title]'
         );
         if ($this->form_validation->run() == false) {
-            $this->index();
+            $this->change($idCrip);
         } else {
             $title = $this->input->post('txt-category');
             $id = $this->input->post('txt-id');
