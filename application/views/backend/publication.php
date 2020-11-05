@@ -8,7 +8,7 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <strong><?php echo 'Add New'.$subtitle ?></strong>
+                    <strong><?php echo 'Add New' . $subtitle ?></strong>
                 </div>
                 <div class="panel-body">
                     <div class="row">
@@ -61,14 +61,18 @@
                         <div class="col-lg-12">
                             <style>
                                 img {
-                                    width: 60px;
+                                    width: 240px;
                                 }
                             </style>
                             <?php
                             $this->table->set_heading("Photo", "Title", "Date", "Change", "Delete");
                             foreach ($publications as $publication) {
                                 $title = $publication->title;
-                                $photopub = "Photo";
+                                if ($publication->img == 1) {
+                                    $photopub = img("assets/frontend/img/publication/" . md5($publication->id) . ".jpg");
+                                } else {
+                                    $photopub = img("assets/frontend/img/noPhoto2.png");
+                                }
                                 $date = $publication->title;
                                 $change = anchor(base_url('admin/publication/change/' . md5($publication->id)), '<button class="btn btn-info" aria-label="Delete"><i class="fa fa-pencil-square-o"></i></button>');
                                 $delete = anchor(base_url('admin/publication/delete/' . md5($publication->id)), '<button class="btn btn-danger" aria-label="Delete"><i class="fa fa-trash fa-lg"></i></button>');

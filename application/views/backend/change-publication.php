@@ -61,14 +61,14 @@
                     <strong><?php echo 'Featured image of ' . $subtitle ?></strong>
                 </div>
                 <style type="text/css">
-                    img{
+                    img {
                         width: 400px;
 
                     };
                 </style>
                 <div class="panel-body">
                     <div class="row">
-                        <div class="col-lg-8 col-lg-offset-1"> 
+                        <div class="col-lg-8 col-lg-offset-1">
                             <?php
                             if ($publication->img == 1) {
                                 echo img("assets/frontend/img/publication/" . md5($publication->id) . ".jpg");
