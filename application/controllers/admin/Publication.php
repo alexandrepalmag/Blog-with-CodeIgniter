@@ -90,7 +90,7 @@ class Publication extends CI_Controller
         $this->load->view('backend/template/html-footer');
     }
 
-    public function saveEditions()
+    public function saveEditions($idCrip)
     {
         $this->load->library('form_validation');
         $this->form_validation->set_rules(
@@ -109,7 +109,7 @@ class Publication extends CI_Controller
             'required|min_length[20]'
         );
         if ($this->form_validation->run() == FALSE) {
-            $this->index();
+            $this->change($idCrip);
         } else {
             $title = $this->input->post('txt-title');
             $subtitle = $this->input->post('txt-subtitle');

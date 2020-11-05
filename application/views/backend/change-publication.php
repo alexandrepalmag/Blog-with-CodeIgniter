@@ -15,8 +15,8 @@
                         <div class="col-lg-3 col-lg-offset-3">
                             <?php
                             echo validation_errors('<div class="alert alert-danger">', '</div>');
-                            echo form_open('admin/publication/saveEditions');
                             foreach ($publications as $publication) {
+                                echo form_open('admin/publication/saveEditions/'.md5($publication->id));
                             ?>
                                 <div class="form-group">
                                     <label id="select-category">Categories</label>
@@ -64,7 +64,9 @@
                     img {
                         width: 400px;
 
-                    };
+                    }
+
+                    ;
                 </style>
                 <div class="panel-body">
                     <div class="row">
