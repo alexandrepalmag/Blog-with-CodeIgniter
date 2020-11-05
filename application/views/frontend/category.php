@@ -26,8 +26,15 @@
                 </p>
                 <p><span class="glyphicon glyphicon-time"></span> <?php echo $thishighlight->date ?></p>
                 <hr>
-                <img class="img-responsive" src="http://placehold.it/900x300" alt="">
-                <hr>
+                <?php
+                if ($thishighlight->img == 1) {
+                    $photopub = base_url("assets/frontend/img/publication/" . md5($thishighlight->id) . ".jpg");
+                ?>
+                    <img class="img-responsive" src="<?php echo $photopub ?>" alt="">
+                    <hr>
+                <?php
+                }
+                ?>
                 <p><?php echo $thishighlight->subtitle ?></p>
                 <a class="btn btn-primary" href="<?php echo base_url('post/' . $thishighlight->id . '/' . clear($thishighlight->title)) ?>">Read more... <span class="glyphicon glyphicon-chevron-right"></span></a>
 

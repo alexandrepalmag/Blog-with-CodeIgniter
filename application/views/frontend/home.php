@@ -31,7 +31,6 @@
                 ?>
                 <p><?php echo $thishighlight->subtitle ?></p>
                 <a class="btn btn-primary" href="<?php echo base_url('post/' . $thishighlight->id . '/' . clear($thishighlight->title)) ?>">Read more... <span class="glyphicon glyphicon-chevron-right"></span></a>
-
                 <hr>
             <?php } ?>
 
