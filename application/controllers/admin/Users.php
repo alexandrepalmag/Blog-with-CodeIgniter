@@ -118,7 +118,7 @@ class Users extends CI_Controller
         $this->load->view('backend/template/html-footer');
     }
 
-    public function saveEditions()
+    public function saveEditions($idCrip)
     {
         //Protection of administration pages.
         if (!$this->session->userdata('loggedInUser')) {
@@ -157,7 +157,7 @@ class Users extends CI_Controller
             'required|matches[txt-password]'
         );
         if ($this->form_validation->run() == FALSE) {
-            $this->index();
+            $this->change($idCrip);
         } else {
             $name = $this->input->post('txt-name');
             $email = $this->input->post('txt-email');

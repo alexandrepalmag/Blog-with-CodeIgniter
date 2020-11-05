@@ -15,8 +15,8 @@
                         <div class="col-lg-3 col-lg-offset-3">
                             <?php
                             echo validation_errors('<div class="alert alert-danger">', '</div>');
-                            echo form_open('admin/users/saveEditions');
                             foreach ($users as $user) {
+                            echo form_open('admin/users/saveEditions/'.md5($user->id));
                             ?>
                                 <div class="form-group">
                                     <label id="txt-name">User Name</label>
