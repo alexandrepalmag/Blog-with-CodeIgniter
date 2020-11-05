@@ -30,8 +30,15 @@
                 <p><span class="glyphicon glyphicon-time"></span> <?php echo $thishighlight->date ?></p>
                 <hr>
                 <p><?php echo $thishighlight->subtitle ?></p>
-                <img class="img-responsive" src="http://placehold.it/900x300" alt="">
-                <hr>
+                <?php
+                if ($thishighlight->img == 1) {
+                    $photopub = base_url("assets/frontend/img/publication/" . md5($thishighlight->id) . ".jpg");
+                ?>
+                    <img class="img-responsive" src="<?php echo $photopub ?>" alt="">
+                    <hr>
+                <?php
+                }
+                ?>
                 <p><?php echo $thishighlight->subtitle ?></p>
                 <hr>
             <?php } ?>
