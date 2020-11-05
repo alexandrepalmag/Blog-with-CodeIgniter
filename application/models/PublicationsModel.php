@@ -97,4 +97,10 @@ public function add($title,$subtitle,$content,$datepub,$category,$userpub)
         return $this->db->update('posts', $datas);
     }
 
+    public function change_imd($id){
+        $datas['img'] = 1;
+        $this->db->where('md5(id)', $id);
+        return $this->db->update('posts', $datas);
+    }
+
 }

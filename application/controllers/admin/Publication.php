@@ -124,4 +124,39 @@ class Publication extends CI_Controller
             }
         }
     }
+
+    public function newPhoto()
+    {
+        //Protection of administration pages.
+        if (!$this->session->userdata('loggedInUser')) {
+            redirect(base_url('admin/login'));
+        }
+        $this->load->model('usersmodel', 'modelusers');
+
+        $id = $this->input->post('id');
+        $config['upload_path'] = './assets/frontend/img/publication';
+        $config['allowed_types'] = 'jpg';
+        $config['file_name'] = $id . ".jpg";
+        $config['overwrite'] = TRUE;
+        $this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload()) {
+            echo $this->upload->display_errors();
+        } else {
+            $config2['source_image'] = './assets/frontend/img/publication' . $id . '.jpg';
+            $config2['create_thumb'] = FALSE;
+            $config2['width'] = 900;
+            $config2['height'] = 300;
+            $this->load->library('image_lib', $config2);
+            if ($this->image_lib->resize()) {
+                if ($this->modelpublication->change_img($id)) {
+                    redirect(base_url('admin/publication/change/' . $id));
+                } else {
+                    echo "It was not possible update the user. Try again!";
+                }
+            } else {
+                echo $this->image_lib->display_errors();
+            }
+        }
+    }
 }
