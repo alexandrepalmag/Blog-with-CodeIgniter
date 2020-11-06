@@ -16,7 +16,7 @@
                             <?php
                             echo validation_errors('<div class="alert alert-danger">', '</div>');
                             foreach ($users as $user) {
-                            echo form_open('admin/users/saveEditions/'.md5($user->id));
+                            echo form_open('admin/users/saveEditions/'.md5($user->id).'/'.$user->user);
                             ?>
                                 <div class="form-group">
                                     <label id="txt-name">User Name</label>

@@ -118,7 +118,7 @@ class Users extends CI_Controller
         $this->load->view('backend/template/html-footer');
     }
 
-    public function saveEditions($idCrip)
+    public function saveEditions($idCrip,$userCom)
     {
         //Protection of administration pages.
         if (!$this->session->userdata('loggedInUser')) {
@@ -141,11 +141,18 @@ class Users extends CI_Controller
             'Historic',
             'required|min_length[18]'
         );
-        $this->form_validation->set_rules(
+
+        $user=$this->input->post('txt-user');
+
+        if($userCom != $user) {
+            $this->form_validation->set_rules('txt-user', 'User', 'required|min_length[3]|is_unique[user.user]');
+        }
+
+        /* $this->form_validation->set_rules(
             'txt-user',
             'User',
             'required|min_length[3]|is_unique[user.user]'
-        );
+        ); */
         $this->form_validation->set_rules(
             'txt-password',
             'Password',
